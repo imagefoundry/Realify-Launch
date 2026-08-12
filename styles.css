@@ -360,7 +360,7 @@ footer { background: var(--black); padding: 52px 0 40px; }
 }
 @media (max-width: 1240px) { :root { --pad: 44px; } }
 
-@media (max-width: 980px) {
+@media (max-width: 1080px) {
   :root { --pad: 32px; --bar: 68px; }
   .hero { display: flex; flex-direction: column; }
   .hero-copy { order: 2; display: flex; flex-direction: column; }
