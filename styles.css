@@ -240,6 +240,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-
 .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); }
 .step { background: var(--white); padding: 34px 30px 38px; border-top: 4px solid var(--black); }
 .step:nth-child(2) { border-top-color: var(--teal); }
+.step-icon {
+  width: 34px; height: 34px;
+  color: var(--grey-ink);
+  margin-bottom: 20px;
+}
 .step-n {
   font-size: 14px; font-weight: 600;
   letter-spacing: 0.24em; text-transform: uppercase;
