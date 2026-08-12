@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Realify | Image Foundry</title>
+<meta name="description" content="Send us the exterior CGI you already own and your material schedule. You get it back looking like the photography you were waiting to shoot, inside a working week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  REALIFY — LAUNCH BUILD
+  Measured off the live Image Foundry Labs pages, not from memory.
+
+  THE SHELL (this was the thing being got wrong)
+    max-width 1200px, centred, 86px inner padding. Content sits centred
+    in the viewport with real margin on BOTH sides. Section heads are
+    centred. Within a band, one element goes left and one goes right so
+    the width is used rather than abandoned. Nothing is hard-left.
+
+  TYPE SCALE, taken from the live pages
+    h1  144px / 800 / -0.03em / lh 0.88 / uppercase
+    h2   64px / 800 / -0.021em / lh 0.92 / uppercase
+    h3   32px / 800 / uppercase
+    body 20px / 400 / -0.015em / lh 1.3
+    btn  22px / 500 / uppercase, long-dash motif inside the button
+    Barlow Condensed throughout, which is what the live site does.
+
+  HOUSE DEVICES USED
+    Solid line над outline line in every headline.
+    Coloured top rule on cards.
+    Small bordered tag chips.
+    Full-bleed split bands: solid panel one side, image running to the
+    browser edge on the other.
+    A coloured band with the head left and the note right.
+    Long-dash motif inside buttons.
+
+  THE ONE DEPARTURE, AND WHY
+    The live heroes lay type over a scrimmed full-bleed image. This page
+    sells image quality, so nothing is laid over the work and the work is
+    never stretched. The hero is a split instead: black panel for the
+    type, the frame running to the right edge, untouched. Frames are cut
+    at native resolution and served at 1900px, so the brick holds.
+
+  COLOUR
+    --black      #000000  panels, footer, headlines
+    --white      #FFFFFF  ground
+    --teal       #2A657D  ACCENT. One primary action per screen, the
+                          finished state, card rules. Never stacked.
+    --off-white  #F6F6F6  alternate ground
+    --rule       #DBDBDB  hairlines
+    --grey-ink   #5F5F5F  captions on light grounds
+    No red. No border radius. No soft shadow.
+
+  VOICE
+    "You", not "we". UK English. Contractions. Short sentences.
+    No em dashes. No comma before "and". No exclamation marks.
+    Banned lexicon avoided: visualisations, emotive, engage, immerse,
+    experience, your audience, contact us.
+  ============================================================
+-->
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Appears once the hero is scrolled past, so it never sits over the work -->
+<div class="stickybar on-dark" id="stickybar">
+  <a class="lockup" href="#top">
+    <span class="lockup-type">Realify<small>Image Foundry</small></span>
+  </a>
+  <div class="bar-right">
+    <a class="bar-tel" href="tel:01613021580">0161 302 1580</a>
+    <a class="bar-cta" href="#start">Send us one view</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero on-dark" id="top">
+
+  <div class="hero-copy align">
+
+    <div class="brandline">
+      <!-- Placeholder lockup. Swap in the real Image Foundry logo asset at launch. -->
+      <a class="lockup" href="https://www.imagefoundry.co.uk/">
+        <span class="lockup-type">Realify<small>Image Foundry</small></span>
+      </a>
+      <a class="bar-tel" href="tel:01613021580">0161 302 1580</a>
+    </div>
+
+    <div class="hero-body">
+      <span class="eyebrow">Image Foundry Labs</span>
+      <h1>Your CGI.<br>Without the<br><span class="outline">CGI look.</span></h1>
+      <p class="hero-lede">Send us the exterior CGI you already own, along with your material schedule. You get it back looking like the photography you were waiting to shoot.</p>
+      <div class="btn-row">
+        <a class="btn" href="#start">Send us one view</a>
+      </div>
+      <p class="hero-fine">It doesn't matter who produced the original. Your first view is free, with nothing to sign. <a href="#faq">Read this before you send.</a></p>
+    </div>
+
+    <div class="nowshowing">
+      <span class="strip-state" id="sState">Your CGI</span>
+      <span class="strip-view" id="sView">Scocles Road, type A1, plot 8</span>
+      <div class="pips" id="pips" role="tablist" aria-label="Choose a view"></div>
+    </div>
+
+  </div>
+
+  <div class="work">
+    <div class="frame" id="frame">
+      <img data-i="0" data-s="b" src="images/view-0-before.webp">
+      <img data-i="0" data-s="a" src="images/view-0-after.webp">
+      <img data-i="1" data-s="b" src="images/view-1-before.webp">
+      <img data-i="1" data-s="a" src="images/view-1-after.webp">
+      <img data-i="2" data-s="b" src="images/view-2-before.webp">
+      <img data-i="2" data-s="a" src="images/view-2-after.webp">
+      <img data-i="3" data-s="b" src="images/view-3-before.webp">
+      <img data-i="3" data-s="a" src="images/view-3-after.webp">
+    </div>
+    <p class="vh">Four exterior views. Each is shown first as the CGI supplied by the client, then as the finished image.</p>
+  </div>
+
+</section>
+
+<!-- BAND -->
+<section class="band">
+  <div class="shell band-in">
+    <div>
+      <span class="eyebrow">Same building. Same camera. Same specification.</span>
+      <h2>Nothing moves<br>but the quality</h2>
+    </div>
+    <p class="band-note">Your brick, roof, glazing and boundaries stay exactly where your original put them. What changes is the light, along with everything that was never specified.</p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="shell">
+    <div class="head">
+      <span class="eyebrow">How it works</span>
+      <h2>Send two things.<br><span class="outline">You get the rest.</span></h2>
+      <p>There's no brief to write and no call to sit through. Get the files to us today and your first view comes back tomorrow.</p>
+    </div>
+
+    <div class="step-grid">
+      <div class="step">
+        <span class="step-n">Step 01</span>
+        <h3>Your high-res CGI</h3>
+        <p>The original export, not a brochure or portal version. 2000px on the long edge is the floor and bigger is better. The more detail in your file, the closer we hold your specification.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">Step 02</span>
+        <h3>Your material schedule</h3>
+        <p>The real brick, roof, stone and render references. Give us those and we hold your actual specification rather than the render's version of it. This improves the result more than anything else you can send.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">Step 03</span>
+        <h3>You get it back</h3>
+        <p>Every view is checked against your original before it reaches you. One view inside 48 hours, a full set inside five working days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="shell">
+    <div class="head">
+      <span class="eyebrow">Worth knowing</span>
+      <h2>Before you<br><span class="outline">send anything</span></h2>
+      <p>Five things that decide whether a view works, so you know what you're getting before you commit to it.</p>
+    </div>
+
+    <div class="qa">
+
+      <div class="qa-item">
+        <button class="qa-q" aria-expanded="true">What stays and what changes?<span class="sign"></span></button>
+        <div class="qa-a open">
+          <p>Everything a buyer or a planner could hold you to stays. Building form and massing, roof pitch and line, window and door positions and sizes, material type and where each material sits on the elevation, boundaries, levels and the camera itself.</p>
+          <p>What changes is the part that was never specified. Light, sky and weather, which is the point of the exercise. Ground texture. The exact species and density of planting. Background vehicles and distant context.</p>
+          <p>Your image is rebuilt rather than adjusted. That's what lets it read as photography instead of a graded render. It's also why it comes back in days rather than weeks. Send your material schedule and your specification is held to the real references.</p>
+          <div class="tags">
+            <span class="tag">Form held</span>
+            <span class="tag">Openings held</span>
+            <span class="tag">Materials held</span>
+            <span class="tag">Camera held</span>
+            <span class="tag">Light rebuilt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <button class="qa-q" aria-expanded="false">Where do these images work?<span class="sign"></span></button>
+        <div class="qa-a">
+          <p>Screen is where they're strongest. Portal listings, your own site, email, social and presentations.</p>
+          <p>They work in print at normal sizes too, so brochures, boards and press. For anything going to print, ask for the higher resolution tier with a recorded check against your original.</p>
+          <p>They aren't built for large format. Not billboards, not building wraps, not anything viewed close up at very large scale. If you need that, it's a different job and we'll talk to you about it separately.</p>
+          <div class="tags">
+            <span class="tag">Screen</span>
+            <span class="tag">Brochure</span>
+            <span class="tag">Boards</span>
+            <span class="tag">Not large format</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <button class="qa-q" aria-expanded="false">What files do you need?<span class="sign"></span></button>
+        <div class="qa-a">
+          <p>The largest you hold. 2000px on the long edge is the floor and bigger is better. Send the original export rather than anything that's been through a brochure, a portal or a deck.</p>
+          <p>Low-res files are the main reason a view doesn't work. There isn't enough information in the file, so more of the detail has to be rebuilt. The further it can move from your specification. If a file is borderline you'll hear that from us before you pay.</p>
+          <p>We work to a fixed set of frames, so if your view doesn't already sit in one of them it needs cropping to fit. That's a decision about your image, so you should make it rather than us. Tell us at the outset if you need the same view in more than one ratio.</p>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <button class="qa-q" aria-expanded="false">What can't move in your image?<span class="sign"></span></button>
+        <div class="qa-a">
+          <p>Tell us at the outset. Planting generally stays where it is. Most of the time nobody minds whether a shrub is exactly that shrub. Sometimes it matters a great deal. We won't know which unless you say.</p>
+          <p>Flag anything fixed, including:</p>
+          <ul>
+            <li>A specific tree or plant, either the species or its exact position. Retained trees under a TPO are the common one.</li>
+            <li>A named material, given as the real reference rather than the render's version of it.</li>
+            <li>Specific hard landscaping. A bin store, a bike shelter, a substation, a paving type, an access route that has to read clearly.</li>
+            <li>A boundary treatment that was a condition rather than a choice.</li>
+            <li>Anything already approved against a planning condition, or already printed for a sales suite.</li>
+            <li>Anything that has to match a sibling image in the same set.</li>
+          </ul>
+          <p>If you flagged it and we've missed it, the fix is on us.</p>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <button class="qa-q" aria-expanded="false">What works best and what's harder?<span class="sign"></span></button>
+        <div class="qa-a">
+          <p>Individual house types and small groups work best. One building, one camera, a clear foreground.</p>
+          <p>Street scenes and masterplans are harder. There's more competing detail in one frame and more materials working against each other. A street where every plot shares the same brick and roof is workable. Four different palettes across eight plots isn't, at this stage. Send it over and you'll get a straight answer on whether it's worth doing.</p>
+          <p>You'll also need the right to have your image adapted. Commissioning a CGI doesn't always carry that, so it's worth a check with whoever produced it.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta on-dark" id="start">
+  <div class="cta-copy align">
+    <span class="eyebrow">No brief, no call, no obligation</span>
+    <h2>Send us one view.<br><span class="outline">We'll do it free.</span></h2>
+    <p>Pick the view you're least happy with and send it over with your material schedule. You'll get it back finished, with no watermark and nothing to sign, so you can judge it against your own.</p>
+    <div class="btn-row">
+      <a class="btn btn-white" href="mailto:anshul@loveimagefoundry.com?subject=Realify%20-%20one%20view">Send us one view</a>
+      <a class="btn btn-ghost" href="tel:01613021580" style="color:#fff">0161 302 1580</a>
+    </div>
+    <p class="cta-fine">Image Foundry Studios, Jactin House, 24 Hood Street, Ancoats, Manchester M4 6WX.</p>
+  </div>
+  <div class="cta-shot">
+    <img src="images/cta-shot.webp">
+  </div>
+</section>
+
+<footer class="on-dark">
+  <div class="shell">
+    <div class="foot-in">
+      <a class="lockup" href="https://www.imagefoundry.co.uk/">
+        <span class="lockup-type">Image Foundry<small>Persuasive CGI</small></span>
+      </a>
+      <nav class="foot-links">
+        <a href="https://www.imagefoundry.co.uk/about-us/">Who we are</a>
+        <a href="https://www.imagefoundry.co.uk/insights/">Insights</a>
+        <a href="https://www.imagefoundry.co.uk/process/">Our process</a>
+        <a href="https://www.imagefoundry.co.uk/contact-us/">Let's talk</a>
+      </nav>
+    </div>
+    <p class="foot-legal">Realify is a service from Image Foundry Studios. <a href="https://www.imagefoundry.co.uk/privacy-policy/privacy-policy/" style="color:inherit">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

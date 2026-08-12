@@ -1,0 +1,418 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:      #000000;
+  --white:      #FFFFFF;
+  --teal:       #2A657D;
+  --off-white:  #F6F6F6;
+  --rule:       #DBDBDB;
+  --grey-ink:   #5F5F5F;
+  --ink:        #1A1A1A;
+  --f: 'Barlow Condensed', sans-serif;
+  --shell: 1200px;
+  --pad: 86px;
+  --bar: 78px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--f);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; }
+
+.shell { margin: 0 auto; padding: 0 var(--pad); }
+
+/* Split panels indent by the plain gutter, which is what the live labs
+   pages do. Shell-aligning them starves the column and forces the
+   headline to break badly. */
+.align { padding-left: var(--pad); }
+
+h1, h2, h3 {
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+}
+h1 { font-size: clamp(42px, 5vw, 88px); }
+h2 { font-size: clamp(42px, 4.9vw, 64px); letter-spacing: -0.021em; line-height: 0.92; }
+h3 { font-size: clamp(26px, 2.3vw, 32px); letter-spacing: 0.005em; line-height: 0.94; }
+
+.outline { -webkit-text-stroke: 2px currentColor; -webkit-text-fill-color: transparent; }
+
+.eyebrow {
+  display: block;
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+p { max-width: 62ch; }
+p + p { margin-top: 15px; }
+
+a:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.on-dark a:focus-visible, .on-dark button:focus-visible { outline-color: var(--white); }
+
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* =====================
+   BUTTONS
+===================== */
+.btn {
+  display: inline-flex; align-items: center; gap: 20px;
+  font-size: 22px; font-weight: 500;
+  letter-spacing: -0.015em; text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 20px;
+  background: var(--teal); color: var(--white);
+  border: 2px solid var(--teal);
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.btn .dash {
+  flex: 0 0 auto; width: 34px; height: 2px;
+  background: currentColor;
+}
+.btn:hover { background: var(--teal); border-color: var(--teal); color: var(--white); }
+
+.btn-ghost { background: transparent; border-color: currentColor; }
+.btn-ghost.on-light { color: var(--black); }
+.btn-ghost.on-dark-btn { color: var(--white); }
+.btn-ghost:hover { background: transparent; color: inherit; border-color: currentColor; }
+
+.btn-white { background: var(--white); border-color: var(--white); color: var(--black); }
+.btn-white:hover { background: var(--white); border-color: var(--black); color: var(--black); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* =====================
+   BAR
+===================== */
+/* The header lives inside the black panel, so the image can start at the
+   very top of the page. A separate bar drops in once the hero is past. */
+.brandline {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding-bottom: clamp(22px, 2.6vw, 34px);
+}
+
+.stickybar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--bar);
+  background: var(--black);
+  display: flex; align-items: center; justify-content: space-between;
+  padding-left: var(--pad);
+  transform: translateY(-101%);
+  transition: transform 220ms ease;
+}
+.stickybar.show { transform: none; }
+.lockup { display: flex; align-items: center; text-decoration: none; color: var(--white); }
+.lockup-type {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  line-height: 1.05; white-space: nowrap;
+}
+.lockup-type small {
+  display: block;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.26em;
+  color: rgba(255,255,255,0.5);
+  margin-top: 3px;
+}
+.bar-right { display: flex; align-items: stretch; height: 100%; }
+.bar-tel {
+  display: flex; align-items: center;
+  font-size: 21px; font-weight: 600;
+  color: var(--white); text-decoration: none; white-space: nowrap;
+}
+.stickybar .bar-tel { padding: 0 clamp(18px, 2vw, 30px); }
+.bar-cta {
+  display: flex; align-items: center; gap: 22px;
+  padding: 0 clamp(20px, 2.4vw, 34px);
+  background: var(--teal); color: var(--white);
+  font-size: 21px; font-weight: 500;
+  text-transform: uppercase; text-decoration: none; white-space: nowrap;
+  transition: background 0.18s, color 0.18s;
+}
+.bar-cta .dash { width: 34px; height: 2px; background: currentColor; }
+.bar-cta:hover { background: var(--white); color: var(--black); }
+
+/* =====================
+   HERO — full-bleed split
+===================== */
+/* The picture takes the larger share. The panel is sized to hold the
+   argument and no more, because every extra line of copy makes the panel
+   taller, which makes the picture narrower in proportion and starts
+   cropping into the building. */
+.hero { display: grid; grid-template-columns: 40fr 60fr; background: var(--black); }
+
+.hero-copy {
+  padding-top: clamp(20px, 2vw, 28px);
+  padding-bottom: clamp(28px, 3vw, 42px);
+  padding-right: clamp(32px, 3.6vw, 62px);
+  color: var(--white);
+  display: flex; flex-direction: column;
+}
+.hero-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+.hero-copy h1 { color: var(--white); margin-bottom: 26px; }
+.hero-lede {
+  border-left: 3px solid var(--teal);
+  padding-left: 18px;
+  color: rgba(255,255,255,0.86);
+  max-width: 44ch;
+  margin-bottom: 34px;
+}
+.hero-fine {
+  margin-top: 22px;
+  font-size: 17px; color: rgba(255,255,255,0.55);
+  max-width: 46ch;
+}
+.hero-fine a { color: rgba(255,255,255,0.85); }
+
+/* the work. Never overlaid, never stretched. */
+/* Nothing sits above, below or on top of the picture. Every label, control
+   and piece of navigation lives in the black panel instead, so the work
+   occupies its half of the screen edge to edge and uninterrupted.
+   Hero frames are cut at 5:4 from native resolution with sky and foreground
+   to spare, so the crop comes off the margins rather than the building. */
+.work { position: relative; }
+.frame { position: absolute; inset: 0; background: #141414; overflow: hidden; }
+.frame img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 44%;   /* holds the building when the crop bites */
+  opacity: 0;
+  transition: opacity 220ms linear;
+}
+.frame img.on { opacity: 1; }
+
+.nowshowing {
+  margin-top: clamp(20px, 2.4vw, 32px);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.strip-state {
+  flex: 0 0 auto;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--white);
+  padding: 9px 14px;
+  border: 1px solid rgba(255,255,255,0.35);
+  transition: background 140ms linear, border-color 140ms linear;
+}
+.strip-state.done { background: var(--teal); border-color: var(--teal); }
+.strip-view {
+  flex: 1 1 auto; min-width: 0;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pips { flex: 0 0 auto; display: flex; gap: 5px; }
+.pips button {
+  width: 34px; height: 4px; padding: 0; border: 0; cursor: pointer;
+  background: rgba(255,255,255,0.28);
+  transition: background 0.18s;
+}
+.pips button[aria-current="true"] { background: var(--white); }
+
+/* =====================
+   CENTRED SECTION HEAD
+===================== */
+.head { text-align: center; max-width: 900px; margin: 0 auto clamp(40px, 4vw, 60px); }
+.head h2 { margin-bottom: 20px; }
+.head p { margin: 0 auto; max-width: 60ch; color: var(--grey-ink); }
+
+/* =====================
+   STEPS
+===================== */
+.steps { padding: clamp(60px, 6.4vw, 96px) 0; }
+.step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); }
+.step { background: var(--white); padding: 34px 30px 38px; border-top: 4px solid var(--black); }
+.step:nth-child(2) { border-top-color: var(--teal); }
+.step-n {
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--grey-ink); display: block; margin-bottom: 16px;
+}
+.step h3 { margin-bottom: 12px; }
+.step p { font-size: 19px; }
+
+/* =====================
+   BAND — head left, note right
+===================== */
+.band {
+  background: var(--teal); color: var(--white);
+  padding: 34px 0;
+}
+.band-in { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.band .eyebrow { color: rgba(255,255,255,0.62); margin-bottom: 10px; }
+.band h2 { color: var(--white); font-size: clamp(30px, 3vw, 42px); }
+.band-note {
+  text-align: right; max-width: 40ch;
+  color: rgba(255,255,255,0.86); font-size: 19px;
+}
+
+/* =====================
+   FAQ
+===================== */
+.faq { padding: clamp(60px, 6.4vw, 96px) 0; background: var(--off-white); }
+.qa { border-top: 1px solid var(--rule); }
+.qa-item { border-bottom: 1px solid var(--rule); }
+.qa-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  background: none; border: 0; padding: 26px 0;
+  font-family: var(--f);
+  font-size: clamp(22px, 2.1vw, 30px); font-weight: 800;
+  letter-spacing: -0.01em; text-transform: uppercase; line-height: 1;
+  color: var(--black); text-align: left; cursor: pointer;
+}
+.qa-q:hover { color: var(--teal); }
+.sign { flex: 0 0 auto; width: 22px; height: 22px; position: relative; }
+.sign::before, .sign::after { content: ''; position: absolute; background: currentColor; }
+.sign::before { top: 10px; left: 0; width: 22px; height: 2px; }
+.sign::after { left: 10px; top: 0; height: 22px; width: 2px; transition: transform 0.18s; }
+.qa-q[aria-expanded="true"] .sign::after { transform: scaleY(0); }
+.qa-a { display: none; padding: 0 0 30px; }
+.qa-a.open { display: block; }
+.qa-a p { font-size: 19px; max-width: none; }
+.qa-a ul { margin: 15px 0 0 20px; }
+.qa-a li { font-size: 19px; margin-bottom: 6px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.tag {
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--grey-ink);
+  border: 1px solid var(--rule);
+  padding: 8px 14px;
+}
+
+/* =====================
+   CTA — full-bleed split
+===================== */
+.cta { display: grid; grid-template-columns: 52fr 48fr; background: var(--teal); }
+.cta-copy {
+  padding-top: clamp(56px, 6vw, 92px);
+  padding-bottom: clamp(56px, 6vw, 92px);
+  padding-right: clamp(32px, 3.6vw, 62px);
+  color: var(--white);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.cta-copy .eyebrow { color: rgba(255,255,255,0.62); }
+.cta-copy h2 { color: var(--white); margin-bottom: 22px; }
+.cta-copy p { color: rgba(255,255,255,0.9); margin-bottom: 34px; max-width: 48ch; }
+.cta-fine {
+  margin-top: 32px; padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.24);
+  font-size: 17px; color: rgba(255,255,255,0.75); max-width: 52ch;
+}
+.cta-fine a { color: inherit; }
+.cta-shot { position: relative; background: #141414; min-height: 380px; }
+.cta-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* =====================
+   FOOTER
+===================== */
+footer { background: var(--black); padding: 52px 0 40px; }
+.foot-in { display: flex; align-items: flex-start; justify-content: space-between; gap: 34px; flex-wrap: wrap; }
+.foot-links { display: flex; gap: 30px; flex-wrap: wrap; }
+.foot-links a {
+  font-size: 19px; color: rgba(255,255,255,0.72);
+  text-decoration: none; transition: color 0.18s;
+}
+.foot-links a:hover { color: var(--white); }
+.foot-legal {
+  margin-top: 34px; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  font-size: 16px; color: rgba(255,255,255,0.45);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 1400px) {
+  .btn { font-size: 20px; gap: 16px; padding: 14px 18px; }
+  .btn .dash { width: 26px; }
+}
+/* narrow laptops. The copy column stops shrinking, so the panel would go
+   square and start eating the building. Reclaim height instead. */
+@media (max-width: 1330px) {
+  .btn { font-size: 19px; padding: 13px 16px; gap: 14px; }
+  .btn .dash { width: 22px; }
+  .hero-lede { font-size: 18px; }
+  .hero-fine { font-size: 16px; margin-top: 18px; }
+}
+@media (max-width: 1240px) { :root { --pad: 44px; } }
+
+@media (max-width: 980px) {
+  :root { --pad: 32px; --bar: 68px; }
+  .hero { display: flex; flex-direction: column; }
+  .hero-copy { order: 2; display: flex; flex-direction: column; }
+  .hero .work { order: 1; position: relative; aspect-ratio: 5 / 4; }
+  .frame { position: absolute; inset: 0; }
+  .brandline { padding: 20px var(--pad) 18px; }
+  .brandline .bar-tel { display: none; }
+  .hero-body { padding: clamp(30px,5vw,42px) var(--pad) 0; }
+  .nowshowing { margin: clamp(26px,4vw,34px) var(--pad) clamp(34px,5vw,46px); }
+  .hero-copy, .cta-copy { padding-left: var(--pad); padding-right: var(--pad); }
+
+  .cta { grid-template-columns: 1fr; }
+  .cta { display: flex; flex-direction: column; }
+  .cta-shot { order: 1; min-height: 260px; aspect-ratio: 16 / 9; }
+  .cta-copy { order: 2; padding-top: clamp(36px,6vw,52px); padding-bottom: clamp(36px,6vw,52px); }
+
+  .step-grid { grid-template-columns: 1fr; }
+  .band-in { flex-direction: column; align-items: flex-start; }
+  .band-note { text-align: left; }
+  .foot-in { flex-direction: column; gap: 24px; }
+}
+
+@media (max-width: 680px) {
+  :root { --pad: 24px; --bar: 64px; }
+  h1 { font-size: clamp(38px, 8vw, 54px); }
+  h2 { font-size: clamp(34px, 7vw, 46px); }
+  .hero-lede, .hero-fine { max-width: none; }
+  .band-note, .cta-copy p { max-width: none; }
+  .qa-q { font-size: clamp(20px, 5vw, 26px); }
+}
+
+@media (max-width: 620px) {
+  :root { --pad: 20px; --bar: 60px; }
+  body { font-size: 18px; }
+  .lockup-type { font-size: 18px; letter-spacing: 0.06em; }
+  .lockup-type small { font-size: 9px; letter-spacing: 0.2em; }
+  .bar-tel { display: none; }
+  .bar-cta { font-size: 17px; gap: 12px; }
+  .bar-cta .dash { width: 20px; }
+  .btn { font-size: 19px; gap: 18px; padding: 13px 18px; }
+  .btn .dash { width: 28px; }
+  .strip-view { font-size: 12px; padding: 12px 14px; letter-spacing: 0.1em; }
+  .strip-state { font-size: 12px; padding: 12px 14px; min-width: 128px; letter-spacing: 0.1em; }
+  .pips { top: 14px; right: 14px; }
+  .pips button { width: 28px; }
+  .step { padding: 28px 22px 32px; }
+  .outline { -webkit-text-stroke-width: 1.5px; }
+  .btn-row { flex-direction: column; align-items: stretch; }
+  .btn-row .btn { justify-content: center; }
+}
+
+@media (max-width: 400px) {
+  .strip-state { display: none; }
+  .strip-view { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
