@@ -445,6 +445,7 @@ footer { background: var(--black); padding: 52px 0 40px; }
   :root { --pad: 24px; --bar: 64px; }
   h1 { font-size: clamp(38px, 8vw, 54px); }
   h2 { font-size: clamp(34px, 7vw, 46px); }
+  .steps h2, .faq h2 { font-size: 42px; }
   .hero-lede, .hero-fine { max-width: none; }
   .band-note, .cta-copy p { max-width: none; }
   .qa-q { font-size: clamp(20px, 5vw, 26px); }
