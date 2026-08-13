@@ -18,7 +18,7 @@
       thumbB = document.getElementById('thumbB'),
       thumbA = document.getElementById('thumbA'),
       pipBox = document.getElementById('pips'),
-      i = 0, after = false, t = null, running = false;
+      i = 0, after = true, t = null, running = false;
 
   var pips = VIEWS.map(function (name, k) {
     var b = document.createElement('button');
@@ -48,15 +48,15 @@
   }
 
   function step() {
-    if (after) { i = (i + 1) % VIEWS.length; after = false; } else { after = true; }
+    if (!after) { i = (i + 1) % VIEWS.length; after = true; } else { after = false; }
     paint();
     t = setTimeout(step, after ? HOLD_A : HOLD_B);
   }
 
   function jump(n) {
     clearTimeout(t);
-    i = n; after = false; paint();
-    if (!reduce) t = setTimeout(step, HOLD_B + 700);
+    i = n; after = true; paint();
+    if (!reduce) t = setTimeout(step, HOLD_A + 700);
   }
 
   function start() { if (running || reduce) return; running = true; t = setTimeout(step, HOLD_B); }
