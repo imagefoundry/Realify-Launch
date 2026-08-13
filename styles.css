@@ -175,6 +175,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-
   padding-left: 60px;
   padding-right: 46px;
 }
+.hero .brandline .lockup { gap: 34px; }
 .hero-copy {
   grid-column: 1; grid-row: 2;
   align-self: center;
@@ -432,6 +433,7 @@ footer { background: var(--black); padding: 52px 0 40px; }
     padding: 20px var(--pad) 18px;
     background: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent);
   }
+  .hero .brandline .lockup { gap: 6px; }
   .brandline .bar-tel { display: none; }
   .hero-body { padding: clamp(30px,5vw,42px) var(--pad) 0; }
   .nowshowing {
@@ -466,7 +468,7 @@ footer { background: var(--black); padding: 52px 0 40px; }
   :root { --pad: 20px; --bar: 60px; }
   body { font-size: 18px; }
   .lockup-type { font-size: 18px; letter-spacing: 0.06em; }
-  .lockup-type small { font-size: 9px; letter-spacing: 0.2em; }
+  .lockup-type small { font-size: 10px; letter-spacing: 0.2em; }
   .bar-tel { display: none; }
   .bar-cta { font-size: 17px; gap: 12px; }
   .bar-cta .dash { width: 20px; }
