@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Realify | Image Foundry</title>
 <meta name="description" content="Send us the exterior CGI you already own and your material schedule. You get it back looking like the photography you were waiting to shoot, inside a working week.">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -87,7 +88,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Appears once the hero is scrolled past, so it never sits over the work -->
 <div class="stickybar on-dark" id="stickybar">
   <a class="lockup" href="#top">
-    <span class="lockup-type">Image Foundry<small>Realify</small></span>
+    <img class="lockup-logo" src="images/if-logo-white.svg" alt="Image Foundry">
+    <span class="lockup-type"><small>Realify</small></span>
   </a>
   <div class="bar-right">
     <a class="bar-tel" href="tel:01613021580">0161 302 1580</a>
@@ -101,16 +103,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="brandline">
     <!-- Placeholder lockup. Swap in the real Image Foundry logo asset at launch. -->
     <a class="lockup" href="https://www.imagefoundry.co.uk/">
-      <span class="lockup-type">Image Foundry<small>Realify</small></span>
+      <img class="lockup-logo" src="images/if-logo-white.svg" alt="Image Foundry">
+      <span class="lockup-type"><small>Realify</small></span>
     </a>
   </div>
 
   <div class="hero-copy align">
 
     <div class="hero-body">
-      <span class="eyebrow">Image Foundry Labs</span>
-      <h1>Your CGI.<br>Without the<br><span class="outline">CGI look.</span></h1>
-      <p class="hero-lede">Send us the exterior CGI you already own, along with your material schedule. You get it back looking like the photography you were waiting to shoot.</p>
+      <span class="eyebrow">For off-plan sales</span>
+      <h1>Stop waiting<br>for the<br><span class="outline">photography.</span></h1>
+      <p class="hero-lede">The day plot one completes, you switch to photographs. Realify moves that quality to the start of the phase, using the exterior CGI you already own.</p>
       <div class="btn-row">
         <a class="btn" href="#start">Send us one view</a>
       </div>
@@ -121,22 +124,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="work">
     <div class="frame" id="frame">
-      <img data-i="0" data-s="b" src="images/view-0-before.webp">
-      <img data-i="0" data-s="a" src="images/view-0-after.webp">
-      <img data-i="1" data-s="b" src="images/view-1-before.webp">
-      <img data-i="1" data-s="a" src="images/view-1-after.webp">
-      <img data-i="2" data-s="b" src="images/view-2-before.webp">
-      <img data-i="2" data-s="a" src="images/view-2-after.webp">
-      <img data-i="3" data-s="b" src="images/view-3-before.webp">
-      <img data-i="3" data-s="a" src="images/view-3-after.webp">
+      <img data-i="1" data-s="b" src="images/CGI-1.webp">
+      <img data-i="1" data-s="a" src="images/CGI-Realified-1.webp">
+      <img data-i="2" data-s="b" src="images/CGI-2.webp">
+      <img data-i="2" data-s="a" src="images/CGI-Realified-2.webp">
+      <img data-i="3" data-s="b" src="images/CGI-3.webp">
+      <img data-i="3" data-s="a" src="images/CGI-Realified-3.webp">
+      <img data-i="4" data-s="b" src="images/CGI-4.webp">
+      <img data-i="4" data-s="a" src="images/CGI-Realified-4.webp">
+      <img data-i="5" data-s="b" src="images/CGI-5.webp">
+      <img data-i="5" data-s="a" src="images/CGI-Realified-5.webp">
+      <img data-i="6" data-s="b" src="images/CGI-6.webp">
+      <img data-i="6" data-s="a" src="images/CGI-Realified-6.webp">
     </div>
-    <span class="work-badge">Your CGI Realified</span>
-    <p class="vh">Four exterior views. Each is shown first as the CGI supplied by the client, then as the finished image.</p>
+    <span class="work-badge" id="workBadge">CGI</span>
+    <p class="vh">Six exterior views. Each is shown first as the CGI supplied by the client, then as the finished image.</p>
   </div>
 
   <div class="nowshowing">
     <span class="strip-state" id="sState">Your CGI</span>
-    <span class="strip-view" id="sView">Scocles Road, type A1, plot 8</span>
+    <div class="strip-thumbs" id="stripThumbs" aria-hidden="true">
+      <img id="thumbB" src="images/CGI-1.webp" alt="">
+      <img id="thumbA" src="images/CGI-Realified-1.webp" alt="">
+    </div>
     <div class="pips" id="pips" role="tablist" aria-label="Choose a view"></div>
   </div>
 
@@ -146,10 +156,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="band">
   <div class="shell band-in">
     <div>
-      <span class="eyebrow">Same building. Same camera. Same specification.</span>
-      <h2>Nothing moves<br>but the quality</h2>
+      <span class="eyebrow">The problem with off-plan</span>
+      <h2>Your best images<br>arrive last</h2>
     </div>
-    <p class="band-note">Your brick, roof, glazing and boundaries stay exactly where your original put them. What changes is the light, along with everything that was never specified.</p>
+    <p class="band-note">By the time plot one is built and photographed, most of the phase is already sold. The images doing the hardest work are the ones you had at the start. Everyone can tell they're renders.</p>
   </div>
 </section>
 
@@ -159,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="head">
       <span class="eyebrow">How it works</span>
       <h2>Send two things.<br><span class="outline">You get the rest.</span></h2>
-      <p>There's no brief to write and no call to sit through. Get the files to us today and your first view comes back tomorrow.</p>
+      <p>No brief to write, no call to sit through and no waiting for a site to finish. Get the files to us today and your first view comes back tomorrow.</p>
     </div>
 
     <div class="step-grid">
@@ -202,9 +212,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="faq" id="faq">
   <div class="shell">
     <div class="head">
-      <span class="eyebrow">Worth knowing</span>
+      <span class="eyebrow">Same building. Same camera. Same specification.</span>
       <h2>Before you<br><span class="outline">send anything</span></h2>
-      <p>Five things that decide whether a view works, so you know what you're getting before you commit to it.</p>
+      <p>Nothing moves but the quality. Here are five things that decide whether a view works, so you know exactly what you're getting before you commit to it.</p>
     </div>
 
     <div class="qa">
@@ -284,7 +294,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="cta-copy align">
     <span class="eyebrow">No brief, no call, no obligation</span>
     <h2>Send us one view.<br><span class="outline">We'll do it free.</span></h2>
-    <p>Pick the view you're least happy with and send it over with your material schedule. You'll get it back finished, with no watermark and nothing to sign, so you can judge it against your own.</p>
+    <p>Pick the view you're least happy with and send it over with your material schedule. You'll get it back finished, with no watermark and nothing to sign, so you can judge it against the photography you were waiting for.</p>
     <div class="btn-row">
       <a class="btn btn-white" href="mailto:anshul@loveimagefoundry.com?subject=Realify%20-%20one%20view">Send us one view</a>
       <a class="btn btn-ghost" href="tel:01613021580" style="color:#fff">0161 302 1580</a>
@@ -300,7 +310,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="shell">
     <div class="foot-in">
       <a class="lockup" href="https://www.imagefoundry.co.uk/">
-        <span class="lockup-type">Image Foundry<small>Persuasive CGI</small></span>
+        <img class="lockup-logo" src="images/if-logo-white.svg" alt="Image Foundry">
       </a>
       <nav class="foot-links">
         <a href="https://www.imagefoundry.co.uk/about-us/">Who we are</a>

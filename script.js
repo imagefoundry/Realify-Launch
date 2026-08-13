@@ -5,14 +5,18 @@
     'Scocles Road, type A1, plot 8',
     'Ashworth, four bedroom detached',
     'Tretower, plot 91',
-    'Raemoir, plots 8 to 10'
+    'Raemoir, plots 8 to 10',
+    'AYFCS016 Headley Court, 2.1, plot 52/53, final',
+    'View 6'
   ];
   var HOLD_B = 2000, HOLD_A = 2700;
 
   var frame = document.getElementById('frame'),
       imgs = [].slice.call(frame.querySelectorAll('img')),
-      view = document.getElementById('sView'),
       state = document.getElementById('sState'),
+      badge = document.getElementById('workBadge'),
+      thumbB = document.getElementById('thumbB'),
+      thumbA = document.getElementById('thumbA'),
       pipBox = document.getElementById('pips'),
       i = 0, after = false, t = null, running = false;
 
@@ -28,11 +32,18 @@
 
   function paint() {
     imgs.forEach(function (im) {
-      im.classList.toggle('on', +im.dataset.i === i && im.dataset.s === (after ? 'a' : 'b'));
+      im.classList.toggle('on', +im.dataset.i === i + 1 && im.dataset.s === (after ? 'a' : 'b'));
     });
-    view.textContent = VIEWS[i];
+    var beforeImg = imgs.find(function (im) { return +im.dataset.i === i + 1 && im.dataset.s === 'b'; });
+    var afterImg = imgs.find(function (im) { return +im.dataset.i === i + 1 && im.dataset.s === 'a'; });
+    thumbB.src = beforeImg.src;
+    thumbA.src = afterImg.src;
+    thumbB.classList.toggle('active', !after);
+    thumbA.classList.toggle('active', after);
     state.textContent = after ? 'Realified' : 'Your CGI';
     state.classList.toggle('done', after);
+    badge.textContent = after ? 'CGI Realified' : 'CGI';
+    badge.classList.toggle('done', after);
     pips.forEach(function (p, k) { p.setAttribute('aria-current', k === i ? 'true' : 'false'); });
   }
 
