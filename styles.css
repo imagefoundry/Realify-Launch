@@ -45,11 +45,11 @@ h1 { font-size: 100px; letter-spacing: -2.1px; line-height: 0.85; }
 h2 { font-size: 85px; letter-spacing: -1.35px; line-height: 0.85; }
 h3 { font-size: 28px; letter-spacing: -0.015em; line-height: 36px; }
 
+
 @media screen and (max-width: 1470px) {
-  h1 { font-size: 50px; }
-  h2 { font-size: 42px; }
-  h3 { font-size: 14px; }
-  .hero-copy { padding-bottom: 31px; }
+  h1 { font-size: 60px; }
+  h2 { font-size: 54px; }
+  h3 { font-size: 20px; }
 }
 
 @media screen and (max-width: 1199px) {
@@ -395,6 +395,17 @@ footer { background: var(--black); padding: 52px 0 40px; }
 /* =====================
    RESPONSIVE
 ===================== */
+@media screen and (max-width: 1838px) {
+  :root { --bar: 56px; }
+  .lockup-logo { width: 100px; }
+  .lockup-type { font-size: 16px; }
+  .lockup-type small { font-size: 14px; }
+  .bar-tel { font-size: 15px; }
+  .stickybar .bar-tel { padding: 0 20px; }
+  .bar-cta { font-size: 15px; padding: 0 24px; gap: 16px; }
+  .bar-cta .dash { width: 24px; }
+}
+
 @media (max-width: 1400px) {
   .btn { font-size: 20px; gap: 16px; padding: 14px 18px; }
   .btn .dash { width: 26px; }
